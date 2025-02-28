@@ -9,24 +9,22 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private InputHandler inputActions;
 
-    private float maxMovSpeed;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float sprintMoveSpeed;
     [SerializeField] private float jumpForce;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private CapsuleCollider capsuleCollider;
+    [SerializeField] private Transform orientation;
+    [SerializeField] private Vector3 showNumber;
+
     private float horInput;
     private float vertInput;
     private Vector3 moveDirection;
-    private Rigidbody rb;
-    private CapsuleCollider capsuleCollider;
+
     public LayerMask whatIsGround;
-
-    [SerializeField] private Transform orientation;
-
     public bool isGrounded;
+    private float castDistance = 0.5f;
 
-    [SerializeField] private Vector3 showNumber;
-
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -34,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -55,30 +52,44 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Detect if player is on ground
+    /// </summary>
     private void IsGrounded()
     {
-        //isGrounded = Physics.Raycast(capsuleCollider.bounds.center, Vector3.down, 
-        //  capsuleCollider.bounds.extents.y + 0.1f, whatIsGround);
+        isGrounded = Physics.BoxCast(
+            capsuleCollider.bounds.center,
+            transform.localScale * 0.5f,
+            Vector3.down,
+            Quaternion.identity,
+            castDistance, whatIsGround);
 
-        isGrounded = true;
+        if (isGrounded)
+        {
+            rb.useGravity = false;
+        }
+        else
+        {
+            rb.useGravity = true;
+        }
     }
 
     private void Move()
     {
+        // Get player movement inputs
         horInput = inputActions.movementInput.x;
         vertInput = inputActions.movementInput.y;
 
         //calculate movement direction
         moveDirection = orientation.forward * vertInput + orientation.right * horInput;
-
         moveDirection.y = 0;
         moveDirection.Normalize();
 
-        if (inputActions.sprintInput && isGrounded)
+        if (inputActions.sprintInput)
         {
             rb.MovePosition(rb.position + sprintMoveSpeed * Time.deltaTime * moveDirection);
         }
-        else if (isGrounded)
+        else 
         {
             rb.MovePosition(rb.position + moveSpeed * Time.deltaTime * moveDirection);
         }
