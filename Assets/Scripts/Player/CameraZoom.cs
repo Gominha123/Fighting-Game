@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static CameraZoom;
 
 public class CameraZoom : MonoBehaviour
 {
@@ -13,6 +14,16 @@ public class CameraZoom : MonoBehaviour
     private int zoomInput;
     private int zoomSetNumber = 2;
     private int numberOfSets;
+
+    static float t = 0.0f;
+    float a = 0;
+    bool isChanging;
+
+    float o0h, o0r;
+    float o1h, o1r;
+    float o2h, o2r;
+
+    float velocity = 0.3f;
 
     public struct ZoomSet
     {
@@ -65,9 +76,10 @@ public class CameraZoom : MonoBehaviour
         zoomSets.Add(zoom10);
         numberOfSets = zoomSets.Count;
         SetZoomSet(zoomSets[zoomSetNumber]);
+        PrepareZoomSet();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         zoomInput = (int)inputActions.cameraZoom;
         if (zoomInput != 0)
@@ -75,14 +87,62 @@ public class CameraZoom : MonoBehaviour
             zoomSetNumber -= zoomInput;
             if (zoomSetNumber >= 0 && zoomSetNumber < numberOfSets)
             {
-                SetZoomSet(zoomSets[zoomSetNumber]);
+                //SetZoomSet(zoomSets[zoomSetNumber]);
+                isChanging = true;
+                t = 0.0f;
             }
             else
             {
                 zoomSetNumber += zoomInput;
             }
         }
+
+        if (isChanging)
+        {
+            t += 0.5f * Time.deltaTime;
+            LerpValues(zoomSets[zoomSetNumber]);
+        }
     }
+
+    /// <summary>
+    /// Changes values smoothly for a smoother zoom in and out
+    /// </summary>
+    /// <param name="zoomSet"> target values</param>
+    private void LerpValues(ZoomSet zoomSet)
+    {
+        o0h = Mathf.Lerp(o0h, zoomSet.topRigHeight,t);
+        o0r = Mathf.Lerp(o0r, zoomSet.topRigRadius, t);
+        o1h = Mathf.Lerp(o1h, zoomSet.midRigHeight, t);
+        o1r = Mathf.Lerp(o1r, zoomSet.midRigRadius, t);
+        o2h = Mathf.Lerp(o2h, zoomSet.bottomRigHeight, t);
+        o2r = Mathf.Lerp(o2r, zoomSet.bottomRigRadius, t);
+
+        ZoomSet zoomAux = new(o0h, o1h, o2h, o0r, o1r, o2r);
+        SetZoomSet(zoomAux);
+
+        if(o2r == zoomSet.bottomRigRadius)
+        {
+            isChanging = false;
+        }
+    }
+
+    /// <summary>
+    /// Sets initial values for top, mid and bottom rig and height for lerping function
+    /// </summary>
+    private void PrepareZoomSet()
+    {
+        o0h = cinemachineFreeLook.m_Orbits[0].m_Height;
+        o0r = cinemachineFreeLook.m_Orbits[0].m_Radius;
+        o1h = cinemachineFreeLook.m_Orbits[1].m_Height;
+        o1r = cinemachineFreeLook.m_Orbits[1].m_Radius;
+        o2h = cinemachineFreeLook.m_Orbits[2].m_Height;
+        o2r = cinemachineFreeLook.m_Orbits[2].m_Radius;
+    }
+
+    /// <summary>
+    /// Sets new TopRig, MidRig and BottomRig Values
+    /// </summary>
+    /// <param name="zoomSet">target values</param>
     private void SetZoomSet(ZoomSet zoomSet)
     {
         cinemachineFreeLook.m_Orbits[0] = new CinemachineFreeLook.Orbit(zoomSet.topRigHeight, zoomSet.topRigRadius);
