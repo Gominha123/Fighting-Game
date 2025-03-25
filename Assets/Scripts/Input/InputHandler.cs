@@ -13,6 +13,7 @@ public class InputHandler : MonoBehaviour
     public bool sprintInput;
     public bool interactInput;
     public bool jumpInput;
+    public bool crouchInput;
 
     private void OnEnable()
     {
@@ -33,6 +34,8 @@ public class InputHandler : MonoBehaviour
         inputActions.PlayerActions.Interact.canceled += i => interactInput = false;
         inputActions.PlayerActions.Jump.started += i => jumpInput = true;
         inputActions.PlayerActions.Jump.canceled += i => jumpInput = false;
+        inputActions.PlayerActions.Crouch.performed  += i => crouchInput = true;
+        inputActions.PlayerActions.Crouch.canceled += i => crouchInput = false;
         inputActions.PlayerCamera.CameraZoom.started += i => cameraZoom = i.ReadValue<float>();
         inputActions.PlayerCamera.CameraZoom.canceled += i => cameraZoom = i.ReadValue<float>();
 

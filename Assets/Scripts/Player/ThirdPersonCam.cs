@@ -10,10 +10,13 @@ public class ThirdPersonCam : MonoBehaviour
     [Header("References")]
     [SerializeField] private CinemachineFreeLook cinemachineFreeLook;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private Transform cam;
     [SerializeField] private float rotSpeed;
 
-    private Quaternion deltaRotation;
-    private float cinemachineYValue;
+    private Vector2 inputDir;
+
+    private Quaternion lookTarget;
+    private float cinemachineXValue;
 
     private void Start()
     {
@@ -24,16 +27,31 @@ public class ThirdPersonCam : MonoBehaviour
 
     private void FixedUpdate()
     {
-        RotatePlayer();
+        //RotatePlayerToCamera();
+        RotatePlayerToInput();
     }
 
-    private void RotatePlayer()
+    //Rotate player to where camera is looking when moving
+    private void RotatePlayerToCamera()
     {
         if (inputActions.movementInput != Vector2.zero)
         {
-            cinemachineYValue = cinemachineFreeLook.m_XAxis.Value;
-            deltaRotation = Quaternion.Euler(new Vector3(0, cinemachineYValue, 0));
-            rb.MoveRotation(Quaternion.Lerp(rb.rotation, deltaRotation, rotSpeed));
+            cinemachineXValue = cinemachineFreeLook.m_XAxis.Value;
+            lookTarget = Quaternion.Euler(new Vector3(0, cinemachineXValue, 0));
+            rb.MoveRotation(Quaternion.Slerp(rb.rotation, lookTarget, rotSpeed));
+        }
+    }
+
+    private void RotatePlayerToInput()
+    {
+        if (inputActions.movementInput != Vector2.zero)
+        {
+            Vector3 moveDir = inputActions.movementInput.y * cam.forward + inputActions.movementInput.x * cam.right;
+            moveDir.y = 0;
+            moveDir.Normalize();
+            lookTarget = Quaternion.LookRotation(moveDir, Vector3.up);
+
+            rb.MoveRotation(Quaternion.Lerp(rb.rotation, lookTarget, rotSpeed));
         }
     }
 }

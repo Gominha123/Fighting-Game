@@ -9,8 +9,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private InputHandler inputActions;
 
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float sprintMoveSpeed;
+    public float moveSpeed;
+    public float sprintMoveSpeed;
     [SerializeField] private float jumpForce;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private CapsuleCollider capsuleCollider;
@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded)
         {
-            rb.useGravity = false;
+            //rb.useGravity = false;
         }
         else
         {
@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.MovePosition(rb.position + sprintMoveSpeed * Time.deltaTime * moveDirection);
         }
-        else 
+        else if(rb.velocity.magnitude <= 10 )
         {
             rb.MovePosition(rb.position + moveSpeed * Time.deltaTime * moveDirection);
         }
