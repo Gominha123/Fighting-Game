@@ -34,7 +34,7 @@ public class ThirdPersonCam : MonoBehaviour
     //Rotate player to where camera is looking when moving
     private void RotatePlayerToCamera()
     {
-        if (inputActions.movementInput != Vector2.zero)
+        if (inputActions.MovementInput != Vector2.zero)
         {
             cinemachineXValue = cinemachineFreeLook.m_XAxis.Value;
             lookTarget = Quaternion.Euler(new Vector3(0, cinemachineXValue, 0));
@@ -44,9 +44,9 @@ public class ThirdPersonCam : MonoBehaviour
 
     private void RotatePlayerToInput()
     {
-        if (inputActions.movementInput != Vector2.zero)
+        if (inputActions.MovementInput != Vector2.zero)
         {
-            Vector3 moveDir = inputActions.movementInput.y * cam.forward + inputActions.movementInput.x * cam.right;
+            Vector3 moveDir = inputActions.MovementInput.y * cam.forward + inputActions.MovementInput.x * cam.right;
             moveDir.y = 0;
             moveDir.Normalize();
             lookTarget = Quaternion.LookRotation(moveDir, Vector3.up);

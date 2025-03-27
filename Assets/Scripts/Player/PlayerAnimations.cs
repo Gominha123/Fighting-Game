@@ -63,16 +63,16 @@ public class PlayerAnimations : MonoBehaviour
     {
         anim.SetBool(isMovingHash, isMoving);
         anim.SetBool(isSprintingHash, isSprinting);
-        anim.SetBool(isCrouchingHash, IsCrouching());
+        anim.SetBool(isCrouchingHash, isCrouching);
     }
 
     private void GetInputValues()
     {
-        isMoving = inputActions.movementInput != Vector2.zero;
-        isSprinting = inputActions.sprintInput;
-        isCrouching = inputActions.crouchInput;
-        horInput = inputActions.movementInput.x;
-        vertInput = inputActions.movementInput.y;
+        isMoving = inputActions.MovementInput != Vector2.zero;
+        isSprinting = inputActions.SprintInput;
+        isCrouching = inputActions.CrouchInput;
+        horInput = inputActions.MovementInput.x;
+        vertInput = inputActions.MovementInput.y;
     }
 
     // Use if crouch is to be used as toggle, if not, just return isCrouching value and don't change it when used
@@ -80,7 +80,6 @@ public class PlayerAnimations : MonoBehaviour
     {
         if (isCrouching)
         {
-            inputActions.crouchInput = false;
             canCrouch = !canCrouch;
         }
 
@@ -110,28 +109,28 @@ public class PlayerAnimations : MonoBehaviour
         }
         else if (isMoving && !isSprinting)
         {
-            if (velocity <= pM.moveSpeed - 0.1f)
+            if (velocity <= pM.MoveSpeed - 0.1f)
             {
                 velocity += acceleration;
             }
-            else if (velocity >= pM.moveSpeed + 0.1f)
+            else if (velocity >= pM.MoveSpeed + 0.1f)
             {
                 velocity -= decelaration;
             }
             else
             {
-                velocity = pM.moveSpeed;
+                velocity = pM.MoveSpeed;
             }
         }
         else if (isMoving && isSprinting)
         {
-            if (velocity <= pM.sprintMoveSpeed)
+            if (velocity <= pM.SprintMoveSpeed)
             {
                 velocity += acceleration;
             }
             else
             {
-                velocity = pM.sprintMoveSpeed;
+                velocity = pM.SprintMoveSpeed;
             }
         }
 

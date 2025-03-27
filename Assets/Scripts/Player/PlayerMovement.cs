@@ -9,8 +9,16 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private InputHandler inputActions;
 
-    public float moveSpeed;
-    public float sprintMoveSpeed;
+
+    public int MoveSpeed { get { return moveSpeed; } private set { moveSpeed = value; } }
+
+    [SerializeField]
+    private int moveSpeed = 0;
+    public int SprintMoveSpeed { get { return sprintMoveSpeed; } private set { sprintMoveSpeed = value; } }
+
+    [SerializeField]
+    private int sprintMoveSpeed = 0;
+
     [SerializeField] private float jumpForce;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private CapsuleCollider capsuleCollider;
@@ -44,9 +52,9 @@ public class PlayerMovement : MonoBehaviour
         IsGrounded();
     }
 
-    private void Jump()
+    public void Jump()
     {
-        if (inputActions.jumpInput && isGrounded)
+        if (inputActions.JumpInput && isGrounded)
         {
             rb.AddForce(jumpForce * Vector3.up, ForceMode.Impulse);
         }
@@ -77,21 +85,21 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         // Get player movement inputs
-        horInput = inputActions.movementInput.x;
-        vertInput = inputActions.movementInput.y;
+        horInput = inputActions.MovementInput.x;
+        vertInput = inputActions.MovementInput.y;
 
         //calculate movement direction
         moveDirection = orientation.forward * vertInput + orientation.right * horInput;
         moveDirection.y = 0;
         moveDirection.Normalize();
 
-        if (inputActions.sprintInput)
+        if (inputActions.SprintInput)
         {
-            rb.MovePosition(rb.position + sprintMoveSpeed * Time.deltaTime * moveDirection);
+            rb.MovePosition(rb.position + SprintMoveSpeed * Time.deltaTime * moveDirection);
         }
         else if(rb.velocity.magnitude <= 10 )
         {
-            rb.MovePosition(rb.position + moveSpeed * Time.deltaTime * moveDirection);
+            rb.MovePosition(rb.position + MoveSpeed * Time.deltaTime * moveDirection);
         }
     }
 }

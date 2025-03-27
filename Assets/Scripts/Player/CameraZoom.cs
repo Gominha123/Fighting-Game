@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static CameraZoom;
 
 public class CameraZoom : MonoBehaviour
@@ -16,14 +17,7 @@ public class CameraZoom : MonoBehaviour
     private int numberOfSets;
 
     static float t = 0.0f;
-    float a = 0;
     bool isChanging;
-
-    float o0h, o0r;
-    float o1h, o1r;
-    float o2h, o2r;
-
-    float velocity = 0.3f;
 
     public struct ZoomSet
     {
@@ -76,12 +70,12 @@ public class CameraZoom : MonoBehaviour
         zoomSets.Add(zoom10);
         numberOfSets = zoomSets.Count;
         SetZoomSet(zoomSets[zoomSetNumber]);
-        PrepareZoomSet();
+       // PrepareZoomSet();
     }
 
     private void LateUpdate()
     {
-        zoomInput = (int)inputActions.cameraZoom;
+        zoomInput = (int)inputActions.CameraZoomInput;
         if (zoomInput != 0)
         {
             zoomSetNumber -= zoomInput;
@@ -110,12 +104,16 @@ public class CameraZoom : MonoBehaviour
     /// <param name="zoomSet"> target values</param>
     private void LerpValues(ZoomSet zoomSet)
     {
-        o0h = Mathf.Lerp(o0h, zoomSet.topRigHeight,t);
-        o0r = Mathf.Lerp(o0r, zoomSet.topRigRadius, t);
-        o1h = Mathf.Lerp(o1h, zoomSet.midRigHeight, t);
-        o1r = Mathf.Lerp(o1r, zoomSet.midRigRadius, t);
-        o2h = Mathf.Lerp(o2h, zoomSet.bottomRigHeight, t);
-        o2r = Mathf.Lerp(o2r, zoomSet.bottomRigRadius, t);
+        float o0h, o0r;
+        float o1h, o1r;
+        float o2h, o2r;
+
+        o0h = Mathf.Lerp(cinemachineFreeLook.m_Orbits[0].m_Height, zoomSet.topRigHeight,t);
+        o0r = Mathf.Lerp(cinemachineFreeLook.m_Orbits[0].m_Radius, zoomSet.topRigRadius, t);
+        o1h = Mathf.Lerp(cinemachineFreeLook.m_Orbits[1].m_Height, zoomSet.midRigHeight, t);
+        o1r = Mathf.Lerp(cinemachineFreeLook.m_Orbits[1].m_Radius, zoomSet.midRigRadius, t);
+        o2h = Mathf.Lerp(cinemachineFreeLook.m_Orbits[2].m_Height, zoomSet.bottomRigHeight, t);
+        o2r = Mathf.Lerp(cinemachineFreeLook.m_Orbits[2].m_Radius, zoomSet.bottomRigRadius, t);
 
         ZoomSet zoomAux = new(o0h, o1h, o2h, o0r, o1r, o2r);
         SetZoomSet(zoomAux);
@@ -129,15 +127,15 @@ public class CameraZoom : MonoBehaviour
     /// <summary>
     /// Sets initial values for top, mid and bottom rig and height for lerping function
     /// </summary>
-    private void PrepareZoomSet()
-    {
-        o0h = cinemachineFreeLook.m_Orbits[0].m_Height;
-        o0r = cinemachineFreeLook.m_Orbits[0].m_Radius;
-        o1h = cinemachineFreeLook.m_Orbits[1].m_Height;
-        o1r = cinemachineFreeLook.m_Orbits[1].m_Radius;
-        o2h = cinemachineFreeLook.m_Orbits[2].m_Height;
-        o2r = cinemachineFreeLook.m_Orbits[2].m_Radius;
-    }
+    //private void PrepareZoomSet()
+    //{
+    //    o0h = cinemachineFreeLook.m_Orbits[0].m_Height;
+    //    o0r = cinemachineFreeLook.m_Orbits[0].m_Radius;
+    //    o1h = cinemachineFreeLook.m_Orbits[1].m_Height;
+    //    o1r = cinemachineFreeLook.m_Orbits[1].m_Radius;
+    //    o2h = cinemachineFreeLook.m_Orbits[2].m_Height;
+    //    o2r = cinemachineFreeLook.m_Orbits[2].m_Radius;
+    //}
 
     /// <summary>
     /// Sets new TopRig, MidRig and BottomRig Values

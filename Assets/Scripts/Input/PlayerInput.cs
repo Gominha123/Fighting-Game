@@ -35,6 +35,60 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CameraZoom"",
+                    ""type"": ""Value"",
+                    ""id"": ""956c5f9c-cbde-4334-a235-1706fadef31b"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Button"",
+                    ""id"": ""4ab03713-8ef1-4bd9-a244-fc7e5bf2e914"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""265bf32d-52d5-4325-a871-bb7e11481600"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""a112fef8-e131-4d2a-8f64-1ae42ece7b67"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""d980863b-ffa6-4ec1-b716-b4588f0d6b50"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""c7c35424-c219-4aa2-bccb-0de9cf931408"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -202,85 +256,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                }
-            ]
-        },
-        {
-            ""name"": ""PlayerActions"",
-            ""id"": ""400c99ba-db05-4550-9154-9dfa8e471623"",
-            ""actions"": [
-                {
-                    ""name"": ""Run"",
-                    ""type"": ""Button"",
-                    ""id"": ""16a3f6bc-89ff-4751-9922-407e044976e7"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""bf01b16a-a337-45e1-bb2a-1c3b549a4662"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""44a8be6e-68a4-4f65-b471-531c86e436a2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Crouch"",
-                    ""type"": ""Button"",
-                    ""id"": ""d5c89bef-c42a-43fc-ad18-ac395e4c47f8"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Attack"",
-                    ""type"": ""Button"",
-                    ""id"": ""8e42873c-2631-4a01-b8ed-17814448ec3a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""048f4218-af5e-442b-9310-cceb29b58cc9"",
-                    ""path"": ""<Keyboard>/shift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Run"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f65c9dcf-3b32-416d-b454-9e51f8f2f301"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""13c0825d-94b3-42ec-aead-60b51dc125aa"",
+                    ""id"": ""948d5235-e069-474e-9db9-15616a384e5d"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -291,7 +270,29 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6a29e305-89b8-42fc-8abe-49ca228553f6"",
+                    ""id"": ""6e292634-c333-4fcb-b7f6-fd3eff473e5b"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(min=-1,max=1)"",
+                    ""groups"": """",
+                    ""action"": ""CameraZoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e2b005fc-b139-408d-a198-a93c430ba9b6"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3cbbdf3f-4e5d-4aa7-b244-68ac69c789e9"",
                     ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -302,40 +303,23 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""db311ebf-5148-4b60-95b2-ac74403a06b0"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""dafc7fa9-8d91-4304-8c72-254d6105d677"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""PlayerCamera"",
-            ""id"": ""61ae4672-cf8e-4344-8e04-371ab25b5a9c"",
-            ""actions"": [
-                {
-                    ""name"": ""CameraZoom"",
-                    ""type"": ""Value"",
-                    ""id"": ""659fd24b-cc06-4c77-8896-e746a9214861"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                }
-            ],
-            ""bindings"": [
+                },
                 {
                     ""name"": """",
-                    ""id"": ""0f262e0a-9e68-4b25-a632-c1d9c79948e6"",
-                    ""path"": ""<Mouse>/scroll/y"",
+                    ""id"": ""b6882dff-81e1-4094-878b-7f60567c0231"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
-                    ""processors"": ""Clamp(min=-1,max=1)"",
+                    ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CameraZoom"",
+                    ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -347,23 +331,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // PlayerMovement
         m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
         m_PlayerMovement_Move = m_PlayerMovement.FindAction("Move", throwIfNotFound: true);
-        // PlayerActions
-        m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
-        m_PlayerActions_Run = m_PlayerActions.FindAction("Run", throwIfNotFound: true);
-        m_PlayerActions_Interact = m_PlayerActions.FindAction("Interact", throwIfNotFound: true);
-        m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
-        m_PlayerActions_Crouch = m_PlayerActions.FindAction("Crouch", throwIfNotFound: true);
-        m_PlayerActions_Attack = m_PlayerActions.FindAction("Attack", throwIfNotFound: true);
-        // PlayerCamera
-        m_PlayerCamera = asset.FindActionMap("PlayerCamera", throwIfNotFound: true);
-        m_PlayerCamera_CameraZoom = m_PlayerCamera.FindAction("CameraZoom", throwIfNotFound: true);
+        m_PlayerMovement_CameraZoom = m_PlayerMovement.FindAction("CameraZoom", throwIfNotFound: true);
+        m_PlayerMovement_Run = m_PlayerMovement.FindAction("Run", throwIfNotFound: true);
+        m_PlayerMovement_Interact = m_PlayerMovement.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerMovement_Jump = m_PlayerMovement.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerMovement_Crouch = m_PlayerMovement.FindAction("Crouch", throwIfNotFound: true);
+        m_PlayerMovement_Attack = m_PlayerMovement.FindAction("Attack", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
     {
         UnityEngine.Debug.Assert(!m_PlayerMovement.enabled, "This will cause a leak and performance issues, PlayerInput.PlayerMovement.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_PlayerActions.enabled, "This will cause a leak and performance issues, PlayerInput.PlayerActions.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_PlayerCamera.enabled, "This will cause a leak and performance issues, PlayerInput.PlayerCamera.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -426,11 +404,23 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerMovement;
     private List<IPlayerMovementActions> m_PlayerMovementActionsCallbackInterfaces = new List<IPlayerMovementActions>();
     private readonly InputAction m_PlayerMovement_Move;
+    private readonly InputAction m_PlayerMovement_CameraZoom;
+    private readonly InputAction m_PlayerMovement_Run;
+    private readonly InputAction m_PlayerMovement_Interact;
+    private readonly InputAction m_PlayerMovement_Jump;
+    private readonly InputAction m_PlayerMovement_Crouch;
+    private readonly InputAction m_PlayerMovement_Attack;
     public struct PlayerMovementActions
     {
         private @PlayerInput m_Wrapper;
         public PlayerMovementActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerMovement_Move;
+        public InputAction @CameraZoom => m_Wrapper.m_PlayerMovement_CameraZoom;
+        public InputAction @Run => m_Wrapper.m_PlayerMovement_Run;
+        public InputAction @Interact => m_Wrapper.m_PlayerMovement_Interact;
+        public InputAction @Jump => m_Wrapper.m_PlayerMovement_Jump;
+        public InputAction @Crouch => m_Wrapper.m_PlayerMovement_Crouch;
+        public InputAction @Attack => m_Wrapper.m_PlayerMovement_Attack;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -443,57 +433,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-        }
-
-        private void UnregisterCallbacks(IPlayerMovementActions instance)
-        {
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
-        }
-
-        public void RemoveCallbacks(IPlayerMovementActions instance)
-        {
-            if (m_Wrapper.m_PlayerMovementActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IPlayerMovementActions instance)
-        {
-            foreach (var item in m_Wrapper.m_PlayerMovementActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_PlayerMovementActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public PlayerMovementActions @PlayerMovement => new PlayerMovementActions(this);
-
-    // PlayerActions
-    private readonly InputActionMap m_PlayerActions;
-    private List<IPlayerActionsActions> m_PlayerActionsActionsCallbackInterfaces = new List<IPlayerActionsActions>();
-    private readonly InputAction m_PlayerActions_Run;
-    private readonly InputAction m_PlayerActions_Interact;
-    private readonly InputAction m_PlayerActions_Jump;
-    private readonly InputAction m_PlayerActions_Crouch;
-    private readonly InputAction m_PlayerActions_Attack;
-    public struct PlayerActionsActions
-    {
-        private @PlayerInput m_Wrapper;
-        public PlayerActionsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Run => m_Wrapper.m_PlayerActions_Run;
-        public InputAction @Interact => m_Wrapper.m_PlayerActions_Interact;
-        public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
-        public InputAction @Crouch => m_Wrapper.m_PlayerActions_Crouch;
-        public InputAction @Attack => m_Wrapper.m_PlayerActions_Attack;
-        public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerActionsActions set) { return set.Get(); }
-        public void AddCallbacks(IPlayerActionsActions instance)
-        {
-            if (instance == null || m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Add(instance);
+            @CameraZoom.started += instance.OnCameraZoom;
+            @CameraZoom.performed += instance.OnCameraZoom;
+            @CameraZoom.canceled += instance.OnCameraZoom;
             @Run.started += instance.OnRun;
             @Run.performed += instance.OnRun;
             @Run.canceled += instance.OnRun;
@@ -511,8 +453,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Attack.canceled += instance.OnAttack;
         }
 
-        private void UnregisterCallbacks(IPlayerActionsActions instance)
+        private void UnregisterCallbacks(IPlayerMovementActions instance)
         {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @CameraZoom.started -= instance.OnCameraZoom;
+            @CameraZoom.performed -= instance.OnCameraZoom;
+            @CameraZoom.canceled -= instance.OnCameraZoom;
             @Run.started -= instance.OnRun;
             @Run.performed -= instance.OnRun;
             @Run.canceled -= instance.OnRun;
@@ -530,81 +478,29 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Attack.canceled -= instance.OnAttack;
         }
 
-        public void RemoveCallbacks(IPlayerActionsActions instance)
+        public void RemoveCallbacks(IPlayerMovementActions instance)
         {
-            if (m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PlayerMovementActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IPlayerActionsActions instance)
+        public void SetCallbacks(IPlayerMovementActions instance)
         {
-            foreach (var item in m_Wrapper.m_PlayerActionsActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PlayerMovementActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PlayerMovementActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
-
-    // PlayerCamera
-    private readonly InputActionMap m_PlayerCamera;
-    private List<IPlayerCameraActions> m_PlayerCameraActionsCallbackInterfaces = new List<IPlayerCameraActions>();
-    private readonly InputAction m_PlayerCamera_CameraZoom;
-    public struct PlayerCameraActions
-    {
-        private @PlayerInput m_Wrapper;
-        public PlayerCameraActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @CameraZoom => m_Wrapper.m_PlayerCamera_CameraZoom;
-        public InputActionMap Get() { return m_Wrapper.m_PlayerCamera; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerCameraActions set) { return set.Get(); }
-        public void AddCallbacks(IPlayerCameraActions instance)
-        {
-            if (instance == null || m_Wrapper.m_PlayerCameraActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PlayerCameraActionsCallbackInterfaces.Add(instance);
-            @CameraZoom.started += instance.OnCameraZoom;
-            @CameraZoom.performed += instance.OnCameraZoom;
-            @CameraZoom.canceled += instance.OnCameraZoom;
-        }
-
-        private void UnregisterCallbacks(IPlayerCameraActions instance)
-        {
-            @CameraZoom.started -= instance.OnCameraZoom;
-            @CameraZoom.performed -= instance.OnCameraZoom;
-            @CameraZoom.canceled -= instance.OnCameraZoom;
-        }
-
-        public void RemoveCallbacks(IPlayerCameraActions instance)
-        {
-            if (m_Wrapper.m_PlayerCameraActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IPlayerCameraActions instance)
-        {
-            foreach (var item in m_Wrapper.m_PlayerCameraActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_PlayerCameraActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public PlayerCameraActions @PlayerCamera => new PlayerCameraActions(this);
+    public PlayerMovementActions @PlayerMovement => new PlayerMovementActions(this);
     public interface IPlayerMovementActions
     {
         void OnMove(InputAction.CallbackContext context);
-    }
-    public interface IPlayerActionsActions
-    {
+        void OnCameraZoom(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
-    }
-    public interface IPlayerCameraActions
-    {
-        void OnCameraZoom(InputAction.CallbackContext context);
     }
 }
