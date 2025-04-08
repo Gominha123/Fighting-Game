@@ -10,11 +10,13 @@ public class InputHandler : MonoBehaviour
     public PlayerInput inputActions;
     public Vector2 MovementInput { get; private set; }
     public float CameraZoomInput { get; private set; }
-    public bool AttackInput { get; private set; }
+    public bool AttackInput { get; set; }
+    public bool HeavyAttackInput { get; set; }
     public bool SprintInput { get; private set; }
     public bool InteractInput { get; private set; }
     public bool JumpInput { get; private set; }
     public bool CrouchInput { get; private set; }
+    public int SelectedWeapon { get; private set; }
 
     private void OnEnable()
     {
@@ -37,15 +39,25 @@ public class InputHandler : MonoBehaviour
         inputActions.PlayerMovement.Run.started += Run;
         inputActions.PlayerMovement.Run.performed += Run;
         inputActions.PlayerMovement.Run.canceled += Run;
+
         inputActions.PlayerMovement.Interact.started += Interact;
         inputActions.PlayerMovement.Interact.performed += Interact;
         inputActions.PlayerMovement.Interact.canceled += Interact;
+
         inputActions.PlayerMovement.Jump.started += Jump;
         inputActions.PlayerMovement.Jump.canceled += Jump;
+
         inputActions.PlayerMovement.Crouch.started += Crouch;
         inputActions.PlayerMovement.Crouch.canceled += Crouch;
+
         inputActions.PlayerMovement.Attack.started += Attack;
         inputActions.PlayerMovement.Attack.canceled += Attack;
+
+        inputActions.PlayerMovement.HeavyAttack.started += HeavyAttack;
+        inputActions.PlayerMovement.HeavyAttack.canceled += HeavyAttack;
+
+        inputActions.PlayerMovement.PrimaryWeapon.started += i => SelectedWeapon = 0;
+        inputActions.PlayerMovement.SecondaryWeapon.started += i => SelectedWeapon = 1;
 
         inputActions.Enable();
     }
@@ -62,34 +74,38 @@ public class InputHandler : MonoBehaviour
         inputActions.PlayerMovement.Run.started -= Run;
         inputActions.PlayerMovement.Run.performed -= Run;
         inputActions.PlayerMovement.Run.canceled -= Run;
+
         inputActions.PlayerMovement.Interact.started -= Interact;
         inputActions.PlayerMovement.Interact.performed -= Interact;
         inputActions.PlayerMovement.Interact.canceled -= Interact;
+
         inputActions.PlayerMovement.Jump.started -= Jump;
         inputActions.PlayerMovement.Jump.canceled -= Jump;
+
         inputActions.PlayerMovement.Crouch.started -= Crouch;
         inputActions.PlayerMovement.Crouch.canceled -= Crouch;
+
         inputActions.PlayerMovement.Attack.started -= Attack;
         inputActions.PlayerMovement.Attack.canceled -= Attack;
+
+        inputActions.PlayerMovement.HeavyAttack.started -= HeavyAttack;
+        inputActions.PlayerMovement.HeavyAttack.canceled -= HeavyAttack;
+
 
         inputActions.Disable();
     }
 
-    // Create functions for every action
-    /* Ex:
-     * 
-     */
-    public void Move(InputAction.CallbackContext context)
+    private void Move(InputAction.CallbackContext context)
     {
         MovementInput = context.ReadValue<Vector2>();
     }
 
-    public void CameraZoom(InputAction.CallbackContext context)
+    private void CameraZoom(InputAction.CallbackContext context)
     {
         CameraZoomInput = context.ReadValue<float>();
     }
 
-    public void Jump(InputAction.CallbackContext context)
+    private void Jump(InputAction.CallbackContext context)
     {
         if (context.started)
         {
@@ -101,7 +117,7 @@ public class InputHandler : MonoBehaviour
         }
     }
 
-    public void Run(InputAction.CallbackContext context)
+    private void Run(InputAction.CallbackContext context)
     {
         if (context.started)
         {
@@ -112,23 +128,41 @@ public class InputHandler : MonoBehaviour
             SprintInput = false;
         }
     }
-    public void Crouch(InputAction.CallbackContext context)
+    private void Crouch(InputAction.CallbackContext context)
     {
         if (context.started)
         {
             CrouchInput = !CrouchInput;
         }
     }
-    public void Attack(InputAction.CallbackContext context)
+    private void Attack(InputAction.CallbackContext context)
     {
-
+        if (context.started)
+        {
+            AttackInput = true;
+        }
+        else if (context.canceled)
+        {
+            AttackInput = false;
+        }
+    }
+    private void HeavyAttack(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            HeavyAttackInput = true;
+        }
+        else if (context.canceled)
+        {
+            HeavyAttackInput = false;
+        }
     }
 
     private void Interact(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            Debug.Log("Started");
+            Debug.Log(SelectedWeapon);
         }
         else if (context.canceled)
         {

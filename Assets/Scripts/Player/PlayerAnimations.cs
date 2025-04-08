@@ -17,18 +17,17 @@ public class PlayerAnimations : MonoBehaviour
     int isSprintingHash;
     int isCrouchingHash;
     int velocityHash;
+    int isHeavyAttackHash;
 
     private bool isMoving;
     private bool isSprinting;
     private bool isCrouching;
+    private bool isHeavyAttacking;
     private bool canCrouch;
 
     private float maxValueToCameraMovement;
     private float sprintMultiplier;
 
-    private float maxValueToInput;
-
-    float velocity;
     float horInput;
     float vertInput;
 
@@ -38,12 +37,16 @@ public class PlayerAnimations : MonoBehaviour
     float acceleration = 0.1f;
     float decelaration = 0.1f;
 
+    public float timer = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
         isMovingHash = Animator.StringToHash("isMoving");
         isSprintingHash = Animator.StringToHash("isSprinting");
         isCrouchingHash = Animator.StringToHash("isCrouching");
+        isHeavyAttackHash = Animator.StringToHash("isHeavyAttacking");
+
         horInputHash = Animator.StringToHash("horInput");
         vertInputHash = Animator.StringToHash("vertInput");
         velocityHash = Animator.StringToHash("velocity");
@@ -53,6 +56,7 @@ public class PlayerAnimations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
         GetInputValues();
         SetHashValues();
         SetMovingAnimationsToInputMovement();
@@ -64,15 +68,28 @@ public class PlayerAnimations : MonoBehaviour
         anim.SetBool(isMovingHash, isMoving);
         anim.SetBool(isSprintingHash, isSprinting);
         anim.SetBool(isCrouchingHash, isCrouching);
+        if (isHeavyAttacking)
+        {
+            anim.SetTrigger(isHeavyAttackHash);
+            inputActions.HeavyAttackInput = false;
+        }
     }
 
     private void GetInputValues()
     {
         isMoving = inputActions.MovementInput != Vector2.zero;
         isSprinting = inputActions.SprintInput;
-        isCrouching = inputActions.CrouchInput;
+        isCrouching = inputActions.CrouchInput; // Not implemented
         horInput = inputActions.MovementInput.x;
         vertInput = inputActions.MovementInput.y;
+        isHeavyAttacking = inputActions.HeavyAttackInput;
+    }
+
+    private float IsPositive(float value)
+    {
+        if (value < 0) return -1;
+        else if (value > 0) return 1;
+        else return 0;
     }
 
     // Use if crouch is to be used as toggle, if not, just return isCrouching value and don't change it when used
@@ -94,47 +111,7 @@ public class PlayerAnimations : MonoBehaviour
     /// </summary>
     private void SetMovingAnimationsToInputMovement()
     {
-        // Stopping
-        // Insert stoping animation to feel better
-        if (!isMoving)
-        {
-            if (velocity > 0)
-            {
-                velocity -= 1f;
-            }
-            else
-            {
-                velocity = 0.0f;
-            }
-        }
-        else if (isMoving && !isSprinting)
-        {
-            if (velocity <= pM.MoveSpeed - 0.1f)
-            {
-                velocity += acceleration;
-            }
-            else if (velocity >= pM.MoveSpeed + 0.1f)
-            {
-                velocity -= decelaration;
-            }
-            else
-            {
-                velocity = pM.MoveSpeed;
-            }
-        }
-        else if (isMoving && isSprinting)
-        {
-            if (velocity <= pM.SprintMoveSpeed)
-            {
-                velocity += acceleration;
-            }
-            else
-            {
-                velocity = pM.SprintMoveSpeed;
-            }
-        }
-
-        anim.SetFloat(velocityHash, velocity);
+        anim.SetFloat(velocityHash, pM.currentSpeed);
     }
 
     /// <summary>
@@ -142,9 +119,6 @@ public class PlayerAnimations : MonoBehaviour
     /// </summary>
     private void SetMovingAnimationsToCameraMovement()
     {
-        //horInput = inputActions.movementInput.x;
-        //vertInput = inputActions.movementInput.y;
-
         // Setting values for smoother transition between animations
         if (isSprinting)
         {

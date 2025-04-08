@@ -9,15 +9,15 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private InputHandler inputActions;
 
-
-    public int MoveSpeed { get { return moveSpeed; } private set { moveSpeed = value; } }
-
     [SerializeField]
     private int moveSpeed = 0;
-    public int SprintMoveSpeed { get { return sprintMoveSpeed; } private set { sprintMoveSpeed = value; } }
 
     [SerializeField]
     private int sprintMoveSpeed = 0;
+
+
+    public float currentSpeed { get; private set; }
+    [SerializeField] private float acceleration = 0.3f;
 
     [SerializeField] private float jumpForce;
     [SerializeField] private Rigidbody rb;
@@ -93,13 +93,45 @@ public class PlayerMovement : MonoBehaviour
         moveDirection.y = 0;
         moveDirection.Normalize();
 
+        if (moveDirection == Vector3.zero)
+        {
+            if (currentSpeed > 0)
+            {
+                currentSpeed -= acceleration * 2f;
+            }
+            else currentSpeed = 0f;
+        }
+        else if (moveDirection != Vector3.zero)
+        {
+            if (inputActions.SprintInput)
+            {
+                if (currentSpeed >= sprintMoveSpeed)
+                {
+                    currentSpeed = sprintMoveSpeed;
+                }
+                else currentSpeed += acceleration;
+            }
+            else
+            {
+                if (currentSpeed > moveSpeed + 1f)
+                {
+                    currentSpeed -= acceleration;
+                }
+                else if (currentSpeed >= moveSpeed)
+                {
+                    currentSpeed = moveSpeed;
+                }
+                else currentSpeed += acceleration;
+            }
+        }
+
         if (inputActions.SprintInput)
         {
-            rb.MovePosition(rb.position + SprintMoveSpeed * Time.deltaTime * moveDirection);
+            rb.MovePosition(rb.position + currentSpeed * Time.deltaTime * moveDirection);
         }
-        else if(rb.velocity.magnitude <= 10 )
+        else
         {
-            rb.MovePosition(rb.position + MoveSpeed * Time.deltaTime * moveDirection);
+            rb.MovePosition(rb.position + currentSpeed * Time.deltaTime * moveDirection);
         }
     }
 }
