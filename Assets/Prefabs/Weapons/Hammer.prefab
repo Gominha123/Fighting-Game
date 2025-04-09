@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 585633496510823047}
   m_Layer: 0
   m_Name: Hammer
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a8db2d03d42694494f0c1711e42be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 12
-  animOV: {fileID: 22100000, guid: 66c423a423d8a2d41bbc93162d656eea, type: 2}
   animLayer: 3
-  animationLayer: 3
+  canHit: 0
+  damage: 12
+  heavyDamage: 0
 --- !u!65 &585633496510823047
 BoxCollider:
   m_ObjectHideFlags: 0

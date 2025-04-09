@@ -16,7 +16,9 @@ public class InputHandler : MonoBehaviour
     public bool InteractInput { get; private set; }
     public bool JumpInput { get; private set; }
     public bool CrouchInput { get; private set; }
-    public int SelectedWeapon { get; private set; }
+    public int SelectedWeapon { get; set; }
+    public bool DodgeRollInput { get; set; }
+
 
     private void OnEnable()
     {
@@ -53,45 +55,14 @@ public class InputHandler : MonoBehaviour
         inputActions.PlayerMovement.Attack.started += Attack;
         inputActions.PlayerMovement.Attack.canceled += Attack;
 
-        inputActions.PlayerMovement.HeavyAttack.started += HeavyAttack;
-        inputActions.PlayerMovement.HeavyAttack.canceled += HeavyAttack;
-
-        inputActions.PlayerMovement.PrimaryWeapon.started += i => SelectedWeapon = 0;
-        inputActions.PlayerMovement.SecondaryWeapon.started += i => SelectedWeapon = 1;
+        //inputActions.PlayerMovement.HeavyAttack.started += HeavyAttack;
+        //inputActions.PlayerMovement.HeavyAttack.canceled += HeavyAttack;
 
         inputActions.Enable();
     }
 
-
     private void OnDisable()
     {
-        inputActions.PlayerMovement.Move.performed -= Move;
-        inputActions.PlayerMovement.Move.canceled -= Move;
-
-        inputActions.PlayerMovement.CameraZoom.started -= CameraZoom;
-        inputActions.PlayerMovement.CameraZoom.canceled -= CameraZoom;
-
-        inputActions.PlayerMovement.Run.started -= Run;
-        inputActions.PlayerMovement.Run.performed -= Run;
-        inputActions.PlayerMovement.Run.canceled -= Run;
-
-        inputActions.PlayerMovement.Interact.started -= Interact;
-        inputActions.PlayerMovement.Interact.performed -= Interact;
-        inputActions.PlayerMovement.Interact.canceled -= Interact;
-
-        inputActions.PlayerMovement.Jump.started -= Jump;
-        inputActions.PlayerMovement.Jump.canceled -= Jump;
-
-        inputActions.PlayerMovement.Crouch.started -= Crouch;
-        inputActions.PlayerMovement.Crouch.canceled -= Crouch;
-
-        inputActions.PlayerMovement.Attack.started -= Attack;
-        inputActions.PlayerMovement.Attack.canceled -= Attack;
-
-        inputActions.PlayerMovement.HeavyAttack.started -= HeavyAttack;
-        inputActions.PlayerMovement.HeavyAttack.canceled -= HeavyAttack;
-
-
         inputActions.Disable();
     }
 

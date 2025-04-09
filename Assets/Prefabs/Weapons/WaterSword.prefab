@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 874696823191531239}
   m_Layer: 0
   m_Name: WaterSword
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,10 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a8db2d03d42694494f0c1711e42be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  animOV: {fileID: 22100000, guid: 5cb6b54d263bb154d8c96438767ed9a5, type: 2}
   animLayer: 1
-  animationLayer: 1
+  canHit: 0
+  damage: 10
+  heavyDamage: 0
 --- !u!65 &874696823191531239
 BoxCollider:
   m_ObjectHideFlags: 0

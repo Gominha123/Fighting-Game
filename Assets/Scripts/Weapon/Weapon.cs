@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public AnimatorOverrideController animOV;
     public AnimLayer animLayer;
     public enum AnimLayer
     {
@@ -13,8 +12,8 @@ public class Weapon : MonoBehaviour
         twoHandSword = 2,
         hammer = 3,
     }
-    
+
+    public bool canHit;
     public float damage;
     public float heavyDamage;
-
 }

@@ -30800,7 +30800,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: 0.3395068
+        value: -0.25
         inSlope: 4.4739676
         outSlope: 4.4739676
         tangentMode: 0
@@ -35219,7 +35219,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: -0.6407694
+        value: -0.25
         inSlope: 1.0713298
         outSlope: 1.0713298
         tangentMode: 0
@@ -69407,7 +69407,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: 0.3395068
+        value: -0.25
         inSlope: 4.4739676
         outSlope: 4.4739676
         tangentMode: 0
@@ -73826,7 +73826,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: -0.6407694
+        value: -0.25
         inSlope: 1.0713298
         outSlope: 1.0713298
         tangentMode: 0
@@ -76034,4 +76034,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.7
+    functionName: CanHit
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.0666667
+    functionName: CantHit
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

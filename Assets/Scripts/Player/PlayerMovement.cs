@@ -33,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded;
     private float castDistance = 0.5f;
 
+    public bool canMove;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -48,7 +50,10 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        Jump();
+        if (canMove)
+        {
+            Jump();
+        }
         IsGrounded();
     }
 
@@ -124,14 +129,21 @@ public class PlayerMovement : MonoBehaviour
                 else currentSpeed += acceleration;
             }
         }
+        if (canMove)
+        {
+            if (inputActions.SprintInput)
+            {
+                rb.MovePosition(rb.position + currentSpeed * Time.deltaTime * moveDirection);
+            }
+            else
+            {
+                rb.MovePosition(rb.position + currentSpeed * Time.deltaTime * moveDirection);
+            }
+        }
+    }
 
-        if (inputActions.SprintInput)
-        {
-            rb.MovePosition(rb.position + currentSpeed * Time.deltaTime * moveDirection);
-        }
-        else
-        {
-            rb.MovePosition(rb.position + currentSpeed * Time.deltaTime * moveDirection);
-        }
+    public void SetMoveCondition(bool canMoveValue)
+    {
+        canMove = canMoveValue;
     }
 }

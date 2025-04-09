@@ -116,6 +116,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DodgeRoll"",
+                    ""type"": ""Button"",
+                    ""id"": ""cf935970-1dea-406d-820b-4c585c492c0e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -382,6 +391,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""SecondaryWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""61d0fd2b-b7e5-4dce-a57a-e2e9df4b1980"",
+                    ""path"": ""<Mouse>/backButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DodgeRoll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -400,6 +420,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_PlayerMovement_HeavyAttack = m_PlayerMovement.FindAction("HeavyAttack", throwIfNotFound: true);
         m_PlayerMovement_PrimaryWeapon = m_PlayerMovement.FindAction("PrimaryWeapon", throwIfNotFound: true);
         m_PlayerMovement_SecondaryWeapon = m_PlayerMovement.FindAction("SecondaryWeapon", throwIfNotFound: true);
+        m_PlayerMovement_DodgeRoll = m_PlayerMovement.FindAction("DodgeRoll", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -476,6 +497,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_HeavyAttack;
     private readonly InputAction m_PlayerMovement_PrimaryWeapon;
     private readonly InputAction m_PlayerMovement_SecondaryWeapon;
+    private readonly InputAction m_PlayerMovement_DodgeRoll;
     public struct PlayerMovementActions
     {
         private @PlayerInput m_Wrapper;
@@ -490,6 +512,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @HeavyAttack => m_Wrapper.m_PlayerMovement_HeavyAttack;
         public InputAction @PrimaryWeapon => m_Wrapper.m_PlayerMovement_PrimaryWeapon;
         public InputAction @SecondaryWeapon => m_Wrapper.m_PlayerMovement_SecondaryWeapon;
+        public InputAction @DodgeRoll => m_Wrapper.m_PlayerMovement_DodgeRoll;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -529,6 +552,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SecondaryWeapon.started += instance.OnSecondaryWeapon;
             @SecondaryWeapon.performed += instance.OnSecondaryWeapon;
             @SecondaryWeapon.canceled += instance.OnSecondaryWeapon;
+            @DodgeRoll.started += instance.OnDodgeRoll;
+            @DodgeRoll.performed += instance.OnDodgeRoll;
+            @DodgeRoll.canceled += instance.OnDodgeRoll;
         }
 
         private void UnregisterCallbacks(IPlayerMovementActions instance)
@@ -563,6 +589,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SecondaryWeapon.started -= instance.OnSecondaryWeapon;
             @SecondaryWeapon.performed -= instance.OnSecondaryWeapon;
             @SecondaryWeapon.canceled -= instance.OnSecondaryWeapon;
+            @DodgeRoll.started -= instance.OnDodgeRoll;
+            @DodgeRoll.performed -= instance.OnDodgeRoll;
+            @DodgeRoll.canceled -= instance.OnDodgeRoll;
         }
 
         public void RemoveCallbacks(IPlayerMovementActions instance)
@@ -592,5 +621,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnHeavyAttack(InputAction.CallbackContext context);
         void OnPrimaryWeapon(InputAction.CallbackContext context);
         void OnSecondaryWeapon(InputAction.CallbackContext context);
+        void OnDodgeRoll(InputAction.CallbackContext context);
     }
 }

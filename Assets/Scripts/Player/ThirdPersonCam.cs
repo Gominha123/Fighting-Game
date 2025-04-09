@@ -12,6 +12,7 @@ public class ThirdPersonCam : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform cam;
     [SerializeField] private float rotSpeed;
+    public static bool canRotate;
 
     private Vector2 inputDir;
 
@@ -27,8 +28,11 @@ public class ThirdPersonCam : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //RotatePlayerToCamera();
-        RotatePlayerToInput();
+        if (canRotate)
+        {
+            //RotatePlayerToCamera();
+            RotatePlayerToInput();
+        }
     }
 
     //Rotate player to where camera is looking when moving

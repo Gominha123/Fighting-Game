@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.TerrainUtils;
 
 public class PlayerAnimations : MonoBehaviour
@@ -22,7 +23,6 @@ public class PlayerAnimations : MonoBehaviour
     private bool isMoving;
     private bool isSprinting;
     private bool isCrouching;
-    private bool isHeavyAttacking;
     private bool canCrouch;
 
     private float maxValueToCameraMovement;
@@ -68,12 +68,9 @@ public class PlayerAnimations : MonoBehaviour
         anim.SetBool(isMovingHash, isMoving);
         anim.SetBool(isSprintingHash, isSprinting);
         anim.SetBool(isCrouchingHash, isCrouching);
-        if (isHeavyAttacking)
-        {
-            anim.SetTrigger(isHeavyAttackHash);
-            inputActions.HeavyAttackInput = false;
-        }
     }
+
+    public void OnHeavyAttack() => anim.SetTrigger(isHeavyAttackHash);
 
     private void GetInputValues()
     {
@@ -82,7 +79,7 @@ public class PlayerAnimations : MonoBehaviour
         isCrouching = inputActions.CrouchInput; // Not implemented
         horInput = inputActions.MovementInput.x;
         vertInput = inputActions.MovementInput.y;
-        isHeavyAttacking = inputActions.HeavyAttackInput;
+        //isHeavyAttacking = inputActions.HeavyAttackInput;
     }
 
     private float IsPositive(float value)
@@ -109,10 +106,7 @@ public class PlayerAnimations : MonoBehaviour
     /// <summary>
     /// Sets the values for the blend tree when character rotates according to the input
     /// </summary>
-    private void SetMovingAnimationsToInputMovement()
-    {
-        anim.SetFloat(velocityHash, pM.currentSpeed);
-    }
+    private void SetMovingAnimationsToInputMovement() => anim.SetFloat(velocityHash, pM.currentSpeed);
 
     /// <summary>
     /// Sets the values for the blend tree when charater only rotates to where camera is looking

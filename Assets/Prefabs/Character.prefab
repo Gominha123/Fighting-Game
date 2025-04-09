@@ -766,7 +766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 5c4a0ded0b8b84944a040b8bc54827b5, type: 3}
-  m_NotificationBehavior: 3
+  m_NotificationBehavior: 1
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -952,6 +952,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isGrounded: 0
+  canMove: 0
 --- !u!114 &912727941582475712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -967,6 +968,7 @@ MonoBehaviour:
   anim: {fileID: 5294490128318910241}
   inputActions: {fileID: 2054971834366190365}
   pM: {fileID: 6808529356053138955}
+  timer: 0
 --- !u!114 &1663693298496852446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -981,15 +983,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputActions: {fileID: 2054971834366190365}
   anim: {fileID: 5294490128318910241}
-  weapon: {fileID: 0}
+  playerMovement: {fileID: 0}
   combo:
   - {fileID: 11400000, guid: 427daff3001570c4080356133e384309, type: 2}
   - {fileID: 11400000, guid: 078d9518d27bd0144b477036feb3346e, type: 2}
   - {fileID: 11400000, guid: 427daff3001570c4080356133e384309, type: 2}
   - {fileID: 11400000, guid: 9904a7cda38ed6344a6e4b32b7336bc3, type: 2}
-  comboCounter: 0
-  timeBetweenCombos: 1
-  timeBetweenAttacks: 0.1
+  isAttacking: 0
 --- !u!1 &2774886334858143222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,6 +1438,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  unarmed: 0
 --- !u!1 &3800029780534903358
 GameObject:
   m_ObjectHideFlags: 0

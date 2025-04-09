@@ -8,8 +8,9 @@ public class WeaponHolder : MonoBehaviour
 {
     [SerializeField] private InputHandler inputActions;
     [SerializeField] private PlayerCombat playerCombat;
-    [SerializeField] private Weapon[] weapons = new Weapon[2];
-    float previousWeapon;
+    public Weapon[] weapons = new Weapon[2];
+    public float currentWeapon;
+    public static int weaponAnimLayer;
 
     public bool unarmed;
 
@@ -27,30 +28,41 @@ public class WeaponHolder : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void OnPrimaryWeapon(InputValue value)
     {
-        if (previousWeapon != inputActions.SelectedWeapon && playerCombat.IsAttacking())
-        {
-            SelectWeapon();
-        }
+        currentWeapon = 0;
+        SelectWeapon();
+    }
+    public void OnSecondaryWeapon()
+    {
+        currentWeapon = 1;
+        SelectWeapon();
     }
 
     public void SelectWeapon()
     {
-        previousWeapon = inputActions.SelectedWeapon;
-        int i = 0;
-        foreach (Weapon weapon in weapons)
+        if (playerCombat.IsAttacking())
         {
-            if (i == inputActions.SelectedWeapon)
+            int i = 0;
+            foreach (Weapon weapon in weapons)
             {
-                weapons[i].gameObject.SetActive(true);
-                playerCombat.SetWeapon(weapons[i]);
+                if (i == currentWeapon)
+                {
+                    weapons[i].gameObject.SetActive(true);
+                    playerCombat.SetWeapon(weapons[i]);
+                    weaponAnimLayer = (int)weapon.animLayer;
+                }
+                else
+                {
+                    weapons[i].gameObject.SetActive(false);
+                }
+                i++;
             }
-            else
-            {
-                weapons[i].gameObject.SetActive(false);
-            }
-            i++;
         }
+    }
+
+    public static int GetCurrentAnimator()
+    {
+        return weaponAnimLayer;
     }
 }
