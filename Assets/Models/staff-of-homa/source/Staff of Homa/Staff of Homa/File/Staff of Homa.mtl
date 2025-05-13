@@ -1,0 +1,430 @@
+newmtl MeshesstaffOfHomacylinder00211Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder00211_diff.png
+map_Kd MeshesstaffOfHomacylinder00211_diff.png
+map_d MeshesstaffOfHomacylinder00211_diff.png
+
+newmtl MeshesstaffOfHomacylinder01311Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder01311_diff.png
+map_Kd MeshesstaffOfHomacylinder01311_diff.png
+map_d MeshesstaffOfHomacylinder01311_diff.png
+
+newmtl MeshesstaffOfHomacylinder01211Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder01211_diff.png
+map_Kd MeshesstaffOfHomacylinder01211_diff.png
+map_d MeshesstaffOfHomacylinder01211_diff.png
+
+newmtl MeshesstaffOfHomacylinder00911Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder00911_diff.png
+map_Kd MeshesstaffOfHomacylinder00911_diff.png
+map_d MeshesstaffOfHomacylinder00911_diff.png
+
+newmtl MeshesstaffOfHomacylinder00511Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder00511_diff.png
+map_Kd MeshesstaffOfHomacylinder00511_diff.png
+map_d MeshesstaffOfHomacylinder00511_diff.png
+
+newmtl MeshesstaffOfHomacylinder01011Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder01011_diff.png
+map_Kd MeshesstaffOfHomacylinder01011_diff.png
+map_d MeshesstaffOfHomacylinder01011_diff.png
+
+newmtl MeshesstaffOfHomacylinder00111Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder00111_diff.png
+map_Kd MeshesstaffOfHomacylinder00111_diff.png
+map_d MeshesstaffOfHomacylinder00111_diff.png
+
+newmtl MeshesstaffOfHomacylinder01411Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder01411_diff.png
+map_Kd MeshesstaffOfHomacylinder01411_diff.png
+map_d MeshesstaffOfHomacylinder01411_diff.png
+
+newmtl MeshesstaffOfHomacylinder00711Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder00711_diff.png
+map_Kd MeshesstaffOfHomacylinder00711_diff.png
+map_d MeshesstaffOfHomacylinder00711_diff.png
+
+newmtl MeshesstaffOfHomacylinder00811Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder00811_diff.png
+map_Kd MeshesstaffOfHomacylinder00811_diff.png
+map_d MeshesstaffOfHomacylinder00811_diff.png
+
+newmtl MeshesstaffOfHomacylinder01111Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+newmtl MeshesstaffOfHomacylinder00611Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder00611_diff.png
+map_Kd MeshesstaffOfHomacylinder00611_diff.png
+map_d MeshesstaffOfHomacylinder00611_diff.png
+
+newmtl MeshesstaffOfHomacylinder00311Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder00311_diff.png
+map_Kd MeshesstaffOfHomacylinder00311_diff.png
+map_d MeshesstaffOfHomacylinder00311_diff.png
+
+newmtl MeshesstaffOfHomacylinder01511Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder01511_diff.png
+map_Kd MeshesstaffOfHomacylinder01511_diff.png
+map_d MeshesstaffOfHomacylinder01511_diff.png
+
+newmtl MeshesstaffOfHomacylinder01711Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder01711_diff.png
+map_Kd MeshesstaffOfHomacylinder01711_diff.png
+map_d MeshesstaffOfHomacylinder01711_diff.png
+
+newmtl MeshesstaffOfHomacylinder01811Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder01811_diff.png
+map_Kd MeshesstaffOfHomacylinder01811_diff.png
+map_d MeshesstaffOfHomacylinder01811_diff.png
+
+newmtl MeshesstaffOfHomacube00311Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacube00311_diff.png
+map_Kd MeshesstaffOfHomacube00311_diff.png
+map_d MeshesstaffOfHomacube00311_diff.png
+
+newmtl MeshesstaffOfHomacylinder02011Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder02011_diff.png
+map_Kd MeshesstaffOfHomacylinder02011_diff.png
+map_d MeshesstaffOfHomacylinder02011_diff.png
+
+newmtl MeshesstaffOfHomacylinder00411Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder00411_diff.png
+map_Kd MeshesstaffOfHomacylinder00411_diff.png
+map_d MeshesstaffOfHomacylinder00411_diff.png
+
+newmtl MeshesstaffOfHomacube00111Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacube00111_diff.png
+map_Kd MeshesstaffOfHomacube00111_diff.png
+map_d MeshesstaffOfHomacube00111_diff.png
+
+newmtl MeshesstaffOfHomacube11Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacube11_diff.png
+map_Kd MeshesstaffOfHomacube11_diff.png
+map_d MeshesstaffOfHomacube11_diff.png
+
+newmtl MeshesstaffOfHomacube00211Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacube00211_diff.png
+map_Kd MeshesstaffOfHomacube00211_diff.png
+map_d MeshesstaffOfHomacube00211_diff.png
+
+newmtl MeshesstaffOfHomacylinder01611Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder01611_diff.png
+map_Kd MeshesstaffOfHomacylinder01611_diff.png
+map_d MeshesstaffOfHomacylinder01611_diff.png
+
+newmtl MeshesstaffOfHomacylinder02211Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder02211_diff.png
+map_Kd MeshesstaffOfHomacylinder02211_diff.png
+map_d MeshesstaffOfHomacylinder02211_diff.png
+
+newmtl MeshesstaffOfHomacylinder11Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder11_diff.png
+map_Kd MeshesstaffOfHomacylinder11_diff.png
+map_d MeshesstaffOfHomacylinder11_diff.png
+
+newmtl MeshesstaffOfHomacylinder02311Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder02311_diff.png
+map_Kd MeshesstaffOfHomacylinder02311_diff.png
+map_d MeshesstaffOfHomacylinder02311_diff.png
+
+newmtl MeshesstaffOfHomacube00411Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacube00411_diff.png
+map_Kd MeshesstaffOfHomacube00411_diff.png
+map_d MeshesstaffOfHomacube00411_diff.png
+
+newmtl MeshesstaffOfHomasphere11Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomasphere11_diff.png
+map_Kd MeshesstaffOfHomasphere11_diff.png
+map_d MeshesstaffOfHomasphere11_diff.png
+
+newmtl MeshesstaffOfHomacube00511Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacube00511_diff.png
+map_Kd MeshesstaffOfHomacube00511_diff.png
+map_d MeshesstaffOfHomacube00511_diff.png
+
+newmtl MeshesstaffOfHomacylinder02411Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder02411_diff.png
+map_Kd MeshesstaffOfHomacylinder02411_diff.png
+map_d MeshesstaffOfHomacylinder02411_diff.png
+
+newmtl MeshesstaffOfHomacylinder01911Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.117647 0.117647 0.117647 
+
+d 1
+
+Ns 0
+
+map_Ka MeshesstaffOfHomacylinder01911_diff.png
+map_Kd MeshesstaffOfHomacylinder01911_diff.png
+map_d MeshesstaffOfHomacylinder01911_diff.png
+

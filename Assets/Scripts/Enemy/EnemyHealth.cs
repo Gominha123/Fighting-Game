@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    [Header("Refrences")]
+    [SerializeField] private Animator animator;
+
     [Header("Base Stats")]
     public float maxHealth;
     public float curretnHealth;
@@ -62,7 +65,11 @@ public class EnemyHealth : MonoBehaviour
             curretnHealth = 0;
             isDead = true;
         }
-        else curretnHealth -= damage;
+        else
+        {
+            curretnHealth -= damage;
+            animator.Play("Hit");
+        }
     }
 
     void Heal(float healAmount)

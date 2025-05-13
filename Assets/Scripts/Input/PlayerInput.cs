@@ -125,6 +125,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Parry"",
+                    ""type"": ""Button"",
+                    ""id"": ""dfe0f130-28b1-4274-b477-b518932e6adb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -402,6 +411,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""DodgeRoll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""016b73ee-9511-4d7d-9be4-57cc7c463f39"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Parry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -421,6 +441,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_PlayerMovement_PrimaryWeapon = m_PlayerMovement.FindAction("PrimaryWeapon", throwIfNotFound: true);
         m_PlayerMovement_SecondaryWeapon = m_PlayerMovement.FindAction("SecondaryWeapon", throwIfNotFound: true);
         m_PlayerMovement_DodgeRoll = m_PlayerMovement.FindAction("DodgeRoll", throwIfNotFound: true);
+        m_PlayerMovement_Parry = m_PlayerMovement.FindAction("Parry", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -498,6 +519,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_PrimaryWeapon;
     private readonly InputAction m_PlayerMovement_SecondaryWeapon;
     private readonly InputAction m_PlayerMovement_DodgeRoll;
+    private readonly InputAction m_PlayerMovement_Parry;
     public struct PlayerMovementActions
     {
         private @PlayerInput m_Wrapper;
@@ -513,6 +535,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @PrimaryWeapon => m_Wrapper.m_PlayerMovement_PrimaryWeapon;
         public InputAction @SecondaryWeapon => m_Wrapper.m_PlayerMovement_SecondaryWeapon;
         public InputAction @DodgeRoll => m_Wrapper.m_PlayerMovement_DodgeRoll;
+        public InputAction @Parry => m_Wrapper.m_PlayerMovement_Parry;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -555,6 +578,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @DodgeRoll.started += instance.OnDodgeRoll;
             @DodgeRoll.performed += instance.OnDodgeRoll;
             @DodgeRoll.canceled += instance.OnDodgeRoll;
+            @Parry.started += instance.OnParry;
+            @Parry.performed += instance.OnParry;
+            @Parry.canceled += instance.OnParry;
         }
 
         private void UnregisterCallbacks(IPlayerMovementActions instance)
@@ -592,6 +618,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @DodgeRoll.started -= instance.OnDodgeRoll;
             @DodgeRoll.performed -= instance.OnDodgeRoll;
             @DodgeRoll.canceled -= instance.OnDodgeRoll;
+            @Parry.started -= instance.OnParry;
+            @Parry.performed -= instance.OnParry;
+            @Parry.canceled -= instance.OnParry;
         }
 
         public void RemoveCallbacks(IPlayerMovementActions instance)
@@ -622,5 +651,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnPrimaryWeapon(InputAction.CallbackContext context);
         void OnSecondaryWeapon(InputAction.CallbackContext context);
         void OnDodgeRoll(InputAction.CallbackContext context);
+        void OnParry(InputAction.CallbackContext context);
     }
 }
