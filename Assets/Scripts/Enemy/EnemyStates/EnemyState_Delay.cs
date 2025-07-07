@@ -1,0 +1,42 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyState_Delay : IState
+{
+    private float waitForSeconds;
+    private float deadline;
+
+    public EnemyState_Delay(float waitForSeconds)
+    {
+        this.waitForSeconds = waitForSeconds;
+    }
+
+    public void OnEnter()
+    {
+        Debug.Log("EnemyState_Delay");
+
+        deadline = Time.time + waitForSeconds;
+    }
+
+    public void OnExit()
+    {
+        Debug.Log("EXIT EnemyState_Delay");
+    }
+
+    public void Tick()
+    {
+
+    }
+
+    public Color GizmoColor()
+    {
+        return Color.white;
+    }
+
+    public bool IsDone()
+    {
+        return Time.time >= deadline;
+    }
+
+}
